@@ -5,10 +5,41 @@
  */
 
 #include <behaviors.dtsi>
-#include <dt-bindings/zmk/keys.h>
-#include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/ext_power.h>
-#include <dt-bindings/zmk/rgb.h>
+
+ * ============================================================
+ * 头文件引用（鼠标、蓝牙、按键、RGB 等）
+ * ============================================================
+ */
+#include <behaviors/mouse_keys.dtsi>              // 鼠标按键行为（点击、移动、滚动）
+#include <dt-bindings/zmk/mouse.h>                // 鼠标相关宏定义（移动方向、滚动等）
+#include <behaviors.dtsi>                         // ZMK 基础行为定义
+#include <dt-bindings/zmk/bt.h>                   // 蓝牙控制宏（切换连接、广播等）
+#include <dt-bindings/zmk/keys.h>                 // 标准键盘按键码定义
+#include <dt-bindings/zmk/pointing.h>             // 指针设备通用定义
+#include <dt-bindings/zmk/rgb.h>                  // RGB 控制宏（切换颜色、模式等）
+
+/*
+ * ============================================================
+ * 鼠标移动灵敏度配置
+ * ============================================================
+ */
+#define ZMK_MOUSE_DEFAULT_MOVE_VAL 1200  // 鼠标移动速度基数（越大移动越快）
+                                          // 原值 600，现改为 1200（速度翻倍）
+                                          
+#define ZMK_MOUSE_DEFAULT_SCRL_VAL 20    // 鼠标滚动速度基数（越大滚动越快）
+                                          // 原值 10，现改为 20（滚动速度翻倍）
+
+/*
+ * ============================================================
+ * 方向宏定义（简化按键绑定时的写法）
+ * ============================================================
+ * 用法：在键位配置中直接写 U_MS_U 即可表示"向上移动鼠标"
+ */
+#define U_MS_U &mmv MOVE_UP              // 鼠标向上移动（UP）
+#define U_MS_D &mmv MOVE_DOWN            // 鼠标向下移动（DOWN）
+#define U_MS_L &mmv MOVE_LEFT            // 鼠标向左移动（LEFT）
+#define U_MS_R &mmv MOVE_RIGHT           // 鼠标向右移动（RIGHT）
 
     
 / {
