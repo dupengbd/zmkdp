@@ -51,8 +51,6 @@
         //com-invdir;
         com-sequential;
         inversion-on;
-        wakeup-source;                    // 允许按键唤醒屏幕
-        auto-off-delay-ms = <30000>;      // 60秒无操作后自动关闭
     };
 };
 / {
